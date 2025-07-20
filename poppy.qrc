@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/Poppy.png</file>
+        <file>index.html</file>
+    </qresource>
+</RCC>
