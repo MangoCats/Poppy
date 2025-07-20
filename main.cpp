@@ -23,11 +23,12 @@ int main(int argc, char *argv[])
   QSettings::setDefaultFormat(QSettings::IniFormat);
 
   QSettings* generalSettings=new QSettings(&app);
-  scriptsPath    = generalSettings->value("scriptsPath"   , ":/scripts" ).toString();
-  splashPath     = generalSettings->value("splashPath"    , ":/images"  ).toString();
-  iconWidth      = generalSettings->value("iconWidth"     , 180         ).toInt();
-  defaultRunTime = generalSettings->value("defaultRuntime", 5000        ).toInt();
-  hostName       = generalSettings->value("hostName"      , QHostInfo::localHostName() ).toString();
+  scriptsPath       = generalSettings->value("scriptsPath"      , ":/scripts" ).toString();
+  splashPath        = generalSettings->value("splashPath"       , ":/images"  ).toString();
+  iconWidth         = generalSettings->value("iconWidth"        , 180         ).toInt();
+  splashTimeDefault = generalSettings->value("splashTimeDefault", 2000        ).toInt();
+  defaultRunTime    = generalSettings->value("defaultRuntime"   , 5000        ).toInt();
+  hostName          = generalSettings->value("hostName"         , QHostInfo::localHostName() ).toString();
   qDebug( "settings file %s", generalSettings->fileName().toUtf8().data() );
 
   // Configure session store

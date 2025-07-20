@@ -80,7 +80,7 @@ void SplashController::service(HttpRequest& request, HttpResponse& response)
   body.append("   align-items: center;\n");
   body.append("}\n");
   body.append(".grid-container--fill {\n");
-  body.append("   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));\n");
+  body.append( QString("   grid-template-columns: repeat(auto-fill, minmax(%1px, 1fr));\n").arg( iconWidth ).toUtf8() );
   body.append("}\n");
   body.append("</style>\n");
   body.append("<title>Poppy: Splash Launcher</title>\n");
@@ -119,7 +119,7 @@ void SplashController::service(HttpRequest& request, HttpResponse& response)
  * @return html for one file's play button
  */
 QByteArray SplashController::playButton( QFileInfo fi, qint32 i )
-{ QByteArray name  = fi.fileName().toUtf8();
+{ QString name  = fi.fileName();
   if ( !name.endsWith( ".png" ) )
     return QByteArray();
   name.chop( 4 );
@@ -127,10 +127,10 @@ QByteArray SplashController::playButton( QFileInfo fi, qint32 i )
   QByteArray label = labelFromFileInfo( fi ).toUtf8();
   QByteArray id    = "btn"+QString::number(i).toUtf8();
   QByteArray ba;
-  ba.append( "<div><a href='/splash/2000/"+name+"'>\n" );
+  ba.append( QString( "<div><a href='/splash/%1/%2'>\n" ).arg( splashTimeDefault ).arg( name ).toUtf8() );
   ba.append( "  <center>\n" );
   if ( img.size() > 0 )
-    ba.append( "    <img src=\"data:image/png;base64,"+img+"\" width=\"180\"/><br/>\n" );
+    ba.append( QString( "    <img src=\"data:image/png;base64,%1\" width=\"%2\"/><br/>\n" ).arg( QString::fromUtf8( img ) ).arg( iconWidth ).toUtf8() );
   ba.append( "    "+label+"<br/>\n" );
   ba.append( "  </center>\n" );
   ba.append( "</a></div>\n" );

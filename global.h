@@ -28,6 +28,9 @@ extern QString splashPath;
 /** Width to scale the splash screens down to for webpage display */
 extern qint32 iconWidth;
 
+/** What's the splash time for icons clicked from the webpage?  milliseconds */
+extern qint32 splashTimeDefault;
+
 /** How long a script is given to run before launching another */
 extern qint32 defaultRunTime;
 

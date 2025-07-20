@@ -16,6 +16,7 @@
               QString  splashPath;
               QString  hostName;
                qint32  iconWidth;
+               qint32  splashTimeDefault;
                qint32  defaultRunTime;
         QFileInfoList  splashFiles;
                QMutex  splashFilesMutex;
